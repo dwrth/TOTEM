@@ -120,12 +120,15 @@ outlines:
   _keys:
     - what: rectangle
       where: true
+      asym: both
       size: [kx, ky]
       bound: false
 
+  # Left half only. Binding the mirrored half alone still orphans the stretch
+  # key (MakerJS union); the real board is a mirror of this outline.
   board:
     - what: rectangle
-      where: true
+      where: "-/^mirror_/"
       size: [cx, cy]
       bound: true
       expand: 1.5

@@ -34,6 +34,8 @@ Upstream TOTEM stays the reference. This repo is the working fork for that redes
 
 Import either file into the [Ergogen](https://docs.ergogen.xyz/) web UI to preview.
 
+![TOTEM num-row layout](/docs/images/TOTEM_layout-num.svg)
+
 ***
 
 ## Upstream TOTEM
