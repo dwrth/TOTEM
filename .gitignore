@@ -1,0 +1,6 @@
+.ergogen-tools/
+ergogen/output/
+ergogen/output-num/
+
+.cursor/
+.DS_Store

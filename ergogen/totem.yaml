@@ -1,0 +1,131 @@
+# TOTEM layout — reconstructed for Ergogen 4.x
+# Switch centers measured from PCB/totem_0-3/totem_0_3.kicad_pcb.
+# Docs: https://docs.ergogen.xyz/
+#
+# Import into the Ergogen web UI, or run:
+#   ergogen totem.yaml -o output
+#
+# Space: Ergogen (Y up). KiCad Y was flipped. Right half is mirrored.
+
+meta:
+  engine: 4.1.0
+  name: TOTEM
+  version: "0.3-reconstructed"
+  reference: https://github.com/GEIGEIGEIST/TOTEM
+
+units:
+  cx: 18
+  cy: 17
+  kx: cx - 1
+  ky: cy - 1
+
+points:
+  key:
+    padding: cy
+    spread: cx
+    width: kx
+    height: ky
+    # Cleaner names than zone_default_row (single-key zones still trim to zone name)
+    name: "{{zone.name}}_{{row}}"
+    tags:
+      key: true
+
+  zones:
+    # Finger columns are separate zones so each can use an absolute PCB anchor
+    # (stagger + splay on the real board do not reduce cleanly to one matrix zone).
+    # Rows build bottom → home → top.
+
+    pinky:
+      anchor:
+        shift: [50.255, -113.481]
+        rotate: 10
+      rows:
+        bottom:
+        home:
+        top:
+      key.tags.finger: true
+
+    ring:
+      anchor:
+        shift: [66.903, -98.364]
+        rotate: 4
+      rows:
+        bottom:
+        home:
+        top:
+      key.tags.finger: true
+
+    middle:
+      anchor:
+        shift: [85.129, -88.168]
+      rows:
+        bottom:
+        home:
+        top:
+      key.tags.finger: true
+
+    index:
+      anchor:
+        shift: [103.129, -96.605]
+      rows:
+        bottom:
+        home:
+        top:
+      key.tags.finger: true
+
+    inner:
+      anchor:
+        shift: [121.129, -99.325]
+      rows:
+        bottom:
+        home:
+        top:
+      key.tags.finger: true
+
+    # Outer pinky stretch (Balbuzard / Osprette style)
+    stretch:
+      anchor:
+        shift: [31.153, -109.089]
+        rotate: 10
+      key.tags:
+        finger: true
+        stretch: true
+
+    thumb_near:
+      anchor:
+        shift: [98.103, -117.314]
+      key.tags.thumb: true
+
+    thumb_home:
+      anchor:
+        shift: [118.028, -120.089]
+        rotate: -15
+      key.tags.thumb: true
+
+    thumb_far:
+      anchor:
+        shift: [136.478, -127.764]
+        rotate: -30
+      key.tags.thumb: true
+
+  # Numeric axis required here (unit names are not resolved for points.mirror)
+  mirror: 149.952
+
+outlines:
+  _keys:
+    - what: rectangle
+      where: true
+      size: [kx, ky]
+      bound: false
+
+  board:
+    - what: rectangle
+      where: true
+      size: [cx, cy]
+      bound: true
+      expand: 1.5
+      joints: 1
+
+  demo:
+    - "^board"
+    - "^_keys"
